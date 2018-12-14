@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_shop_tree" model="ir.ui.view">
+            <field name="name">shop.tree</field>
+            <field name="model">product</field>
+            <field name="priority" eval="8" />
+            <field name="inherit_id" ref="view_product_tree"/>
+            <field name="arch" type="xml">
+                <tree string="Product">
+                    
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_shop_form" model="ir.ui.view">
+            <field name="name">shop.form</field>
+            <field name="model">product</field>
+            <field name="priority" eval="8" />
+            <field name="inherit_id" ref="view_product_form"/>
+            <field name="arch" type="xml">
+                <form string="Product">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <!-- <tr>
+                                        <td style="padding-right:10px;">: <field name="name" required="1" placeholder="Name" /></td>
+                                    </tr> -->
+                                    <tr>
+                                      <xpath expr="//tr[contains(text(),'Price')]" position="inside">
+                    <button string="Buy" name = "buy_add" type= "object">
+                                    </button>
+                                    </xpath>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="4">
+                            <page name="information"
+                                string="Offer Information">
+                                <group col="4" colspan="4"
+                                    name="personal_detail">
+                                    <xpath expr="//tr[contains(text(),'Price')]" position="before">
+
+                            <field name="offer_code" />
+                            
+                    </xpath>
+                    
+                                    <!-- <field name="name" />
+                                    <field name="code" /> -->
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_view_shop">
+            <field name="name">Shop</field>
+            <field name="res_model">product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Shop
+                </p>
+            </field>
+        </record>
+        <menuitem id="menu_shop" name="Shop" parent="main_menu"
+                  action="action_view_shop"/>
+    </data>
+</odoo>

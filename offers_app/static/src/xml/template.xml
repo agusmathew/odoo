@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!--      Dynamic Reports Header Template     -->
+
+    <t t-name="product_template">
+        <div class="col-sm-6">
+            <button type="button" class='btn btn-primary btn-sm o_account-widget-pdf' id="apply_id">Apply</button>
+          <!-- <button type="button" class='btn btn-primary btn-sm o_account-xlsx' id="dynamic_report_export_xlsx">EXP</button> -->
+        </div>
+    </t>
+</templates>

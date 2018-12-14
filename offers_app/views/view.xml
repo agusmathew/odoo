@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_product_tree" model="ir.ui.view">
+            <field name="name">product.tree</field>
+            <field name="model">product</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Product">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="price" />
+                    <field name="date" />
+                    <field name="stock" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_product_form" model="ir.ui.view">
+            <field name="name">product.form</field>
+            <field name="model">product</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Product">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;">Name: <field name="name" required="1" placeholder="Name" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-right:10px;">Product Code: <field name="code" placeholder="Product Code" /></td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="4">
+                            <page name="information"
+                                string="Product Information">
+                                <group col="4" colspan="4"
+                                    name="personal_detail">
+                                    <field name="stock" />
+                                    <field name="date" />
+                                    <field name="price"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_view_product">
+            <field name="name">Products</field>
+            <field name="res_model">product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new product
+                </p>
+            </field>
+        </record>
+        <menuitem id="main_menu" name="Offers App"/>
+        <menuitem id="menu_product" name="Products" parent="main_menu"
+                  action="action_view_product"/>
+
+        <!-- <record model="ir.actions.act_window" id="action_view_shop">
+            <field name="name">Shop</field>
+            <field name="res_model">product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Shop
+                </p>
+            </field>
+        </record>
+        <menuitem id="shop_product" name="Shop" parent="menu_product"
+                  action="action_view_shop"/> -->
+    </data>
+</odoo>

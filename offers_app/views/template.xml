@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+<record id="view_pop_form" model="ir.ui.view">
+            <field name="name">Offer Price</field>
+            <field name="model">pop</field>
+            <field name="priority" eval="8" />
+            <!-- <field name="inherit_id" ref="view_product_form"/> -->
+            <field name="arch" type="xml">
+                <form string="Product">
+                    <sheet>
+                        <div class="oe_title">
+                            <!-- <h1>
+                                <table>
+                                    <tr>
+                                        <field name="name" />
+                                    </tr>
+                                    <tr>
+                                      <field name="code" />
+                                    </tr>
+                                </table>
+                            </h1> -->
+                        </div>
+                        <notebook colspan="4">
+                            <page name="information"
+                                string="Order Information">
+                                <group col="4" colspan="4"
+                                    name="personal_detail">
+                    
+                                    <field name="name" />
+                                    <field name="code" />
+                                    <field name="price"/>
+
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+            </data>
+</odoo>

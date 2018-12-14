@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_offer_tree" model="ir.ui.view">
+            <field name="name">offer.tree</field>
+            <field name="model">offer</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Offer">
+                    <field name="start" />
+                    <field name="code" />
+                    <field name="end" />
+                    <!-- <field name="stock" /> -->
+                    <field name="discount" />
+                    <field name="amount" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_offer_form" model="ir.ui.view">
+            <field name="name">offer.form</field>
+            <field name="model">offer</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Offer">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <!-- <tr>
+                                        <td style="padding-right:10px;">: <field name="name" required="1" placeholder="Name" /></td>
+                                    </tr> -->
+                                    <tr>
+                                        <td style="padding-right:10px;">Offer Code: <field name="code" placeholder="Offer Code" /></td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="4">
+                            <page name="information"
+                                string="Offer Information">
+                                <group col="4" colspan="4"
+                                    name="personal_detail">
+                                    <field name="start" />
+                                    <field name="end" />
+                                    <field name="discount"/>
+                                    <field name="amount"/>
+                                    <field name="products"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_view_offer">
+            <field name="name">Offers</field>
+            <field name="res_model">offer</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new offer
+                </p>
+            </field>
+        </record>
+        <menuitem id="main_menu" name="Offers App"/>
+        <menuitem id="menu_offer" name="Offers" parent="main_menu"
+                  action="action_view_offer"/>
+    </data>
+</odoo>
