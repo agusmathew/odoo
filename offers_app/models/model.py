@@ -1,6 +1,6 @@
 from odoo import models, fields,api
 from odoo import http
-
+# product model
 class Product(models.Model):
 
     _name = "product"
@@ -10,8 +10,9 @@ class Product(models.Model):
     stock = fields.Integer(string='Stock')
     date = fields.Date(string="Date")
     offer_code =  fields.Char(string='Offer Code')
-
+# funtion to check offer and apply available offer code when the buy button is clicked
     def buy_add (self):
+        
         products = self.env['product'].search([('code','=',self.code)])
         offers = self.env['offer'].search([])
 
@@ -19,7 +20,9 @@ class Product(models.Model):
         product_stock = products.stock if products else None
         product_offer = products.offer_code if products else None
         product_price = products.price if products else None
-        price = None         
+        price = None     
+
+        # if the product is available     
         if product_stock and product_code:
             for offer in offers:
                 offer_code = offer.code if offer else None
@@ -71,7 +74,7 @@ class Product(models.Model):
             'context':context,
         }
 
- 
+# Transient Model to save product details after the offer code is applied
 class Pop(models.TransientModel):
     _name = "pop"
     name = fields.Char(string='Name', required=True)
@@ -89,7 +92,7 @@ class Pop(models.TransientModel):
         # for product in products:
         #     if product
 
-        
+# offers model which contains all the offers and their details    
 class Offer(models.Model):
 
     _name = "offer"
