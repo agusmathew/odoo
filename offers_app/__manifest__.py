@@ -6,7 +6,6 @@
         'views/view.xml',
         'views/shop.xml',
         'views/offers.xml',
-        'views/example_webpage.xml',
         'views/template.xml',
     ],
     'demo': [],
